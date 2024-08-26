@@ -10,8 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_26_181848) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "booking_reviews", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.float "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_booking_reviews_on_booking_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "date"
+    t.bigint "castle_id", null: false
+    t.bigint "user_id", null: false
+    t.float "price"
+    t.boolean "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["castle_id"], name: "index_bookings_on_castle_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "castles", force: :cascade do |t|
+    t.string "castle_name"
+    t.string "location"
+    t.string "castle_picture"
+    t.text "overview"
+    t.float "castle_avg_rating"
+    t.float "min_price"
+    t.boolean "availability"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_castles_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "booking_reviews", "bookings"
+  add_foreign_key "bookings", "castles"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "castles", "users"
 end
