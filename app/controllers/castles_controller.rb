@@ -1,4 +1,7 @@
 class CastlesController < ApplicationController
+  def index
+    @castles = Castle.all
+  end
   before_action :set_castle, only: %i[show edit update destroy]
 
   def show
