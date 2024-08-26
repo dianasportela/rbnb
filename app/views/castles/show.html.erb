@@ -1,4 +1,41 @@
 <div class="container">
-  <h1><%= @castle.name %></h1>
-  div.row
+  <h1><%= @castle.castle_name %></h1>
+  <div class="row ">
+    <%= @castle.castle_picture %>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="card">
+        <strong>Average rating:</strong>
+        <%= @castle.castle_avg_rating %>
+      </div>
+
+      <div class="card">
+        <p>
+          <strong>Location:</strong>
+          <%= @castle.location %>
+        </p>
+
+        <p>
+          <strong>About:</strong>
+          <%= @castle.overview %>
+        </p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <strong>Minimum price:</strong>
+        <%= @castle.min_price %>
+      </div>
+      <div class="card">
+        <strong>Availability:</strong>
+        <%= @castle.availability %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= link_to "Back to search", castles_path %>
+  </div>
+
 </div>
