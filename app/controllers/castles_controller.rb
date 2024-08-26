@@ -1,5 +1,6 @@
 class CastlesController < ApplicationController
-  before action: set_castle, only: %i[ destroy edit show update ]
+  before_action :set_castle, only: %i[ destroy edit show update ]
+
   def index
     @castles = Castle.all
   end
@@ -20,7 +21,6 @@ class CastlesController < ApplicationController
   end  
   
   def destroy
-    set_castle
     @castle.destroy
     
     redirect_to castles_path, notice: "Castle was successfully destroyed.", status: :see_other
@@ -32,7 +32,7 @@ class CastlesController < ApplicationController
   private
 
   def castle_params
-    params.require(:castle).permit(:comment, :movie_id, :list_id)
+    params.require(:castle).permit(:overview)
   end
 
   def set_castle
