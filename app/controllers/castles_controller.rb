@@ -5,11 +5,13 @@ class CastlesController < ApplicationController
     set_castle
     @castle.destroy
 
-    # required_to _path(@castle.list), status: :see_other
-    # redirect_to castles_path, notice: "Castle was successfully destroyed.", status: :see_other
+    redirect_to castles_path, notice: "Castle was successfully destroyed.", status: :see_other
   end
 
   def edit
+  end
+
+  def show
   end
 
   def update
