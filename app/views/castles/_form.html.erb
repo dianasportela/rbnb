@@ -1,13 +1,7 @@
-<%= form_with model: @castle do |f| %>
-  <%= f.label :castle_name %>
-  <%= f.text_field :castle_name %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <%= f.label :castle_picture %>
-  <%= f.url_field :castle_picture %>
-  <%= f.label :overview %>
-  <%= f.text_field :overview %>
-  <%= f.label :overview %>
-  <%= f.text_field :overview %>
+<%= simple_form_for(@castle) do |f| %>
+  <%= f.input :castle_name %>
+  <%= f.input :location %>
+  <%= f.input :castle_picture %>
+  <%= f.input :overview %>
   <%= f.submit %>
 <% end %>
