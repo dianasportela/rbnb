@@ -4,7 +4,14 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-8 img">
-      <%= image_tag @castle.castle_picture, width: '100%' %>
+    <%#=showing cloudinary photos %>
+      <% if @castle.photos.attached? %>
+        <% @castle.photos.each do |photo| %>
+            <%= cl_image_tag photo.key %>
+        <% end  %>
+      <% else %>
+        <%= image_tag @castle.castle_picture, width: '100%' %>
+      <% end %>
     </div>
     <div class="col-4 castle-info">
       <ul class="list-group list-group-flush">
