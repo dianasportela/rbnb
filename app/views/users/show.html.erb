@@ -33,14 +33,16 @@
 
 <%# --- CASTLES --- %>
 
-  <div>
-    <strong>Castles:</strong>
-    <% @user.castles.each do | castle | %>
-      <div class="card">
-          <%= castle.castle_name %>
-      </div>
+<div class= "container mb-4 mt-4" >
+  <div class = "cards">
+    <% @user.castles.each do |castle| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= castle.castle_picture %>)">
+        <h4><%= castle.castle_name %></h4>
+          <p><%= castle.location %></p>
+    </div>
     <% end %>
   </div>
+</div>
 
 <%# --- GO BACK --- %>
 
