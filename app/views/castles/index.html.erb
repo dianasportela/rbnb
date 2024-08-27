@@ -1,7 +1,10 @@
-
-  <% @castles.each do |castle| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= castle.castle_picture %>)">
-      <h1><%= castle.castle_name %></h1>
-        <p><%= castle.location %></p>
+ <div class= "container" >
+  <div class = "cards">
+    <% @castles.each do |castle| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= castle.castle_picture %>)">
+        <h4><%= castle.castle_name %></h4>
+          <p><%= castle.location %></p>
+    </div>
+    <% end %>
   </div>
-  <% end %>
+</div>
