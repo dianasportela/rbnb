@@ -10,12 +10,11 @@ class CastlesController < ApplicationController
   end
 
   def create
-    raise
     @castle = Castle.new(castle_params)
     if @castle.save
       redirect_to castles_path
     else
-      render 'new', status: :unprocessable_entity
+      render 'form', status: :unprocessable_entity
     end
   end
 
