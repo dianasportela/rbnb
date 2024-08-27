@@ -1,5 +1,6 @@
 class CastlesController < ApplicationController
   before_action :set_castle, only: %i[ destroy edit show update ]
+  skip_before_action :authenticate_user!, only: :show
 
   def index
     @castles = Castle.all

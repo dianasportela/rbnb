@@ -1,40 +1,46 @@
-<div class="container">
-  <h1><%= @castle.castle_name %></h1>
-  <div class="row ">
-    <%= @castle.castle_picture %>
-  </div>
+<div class="container mt-4">
   <div class="row">
-    <div class="col-8">
-      <div class="card">
-        <strong>Average rating:</strong>
-        <%= @castle.castle_avg_rating %>
-      </div>
-
-      <div class="card">
-        <p>
-          <strong>Location:</strong>
-          <%= @castle.location %>
-        </p>
-
-        <p>
-          <strong>About:</strong>
-          <%= @castle.overview %>
-        </p>
-      </div>
+    <h1 class="text-center"><%= @castle.castle_name %></h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8 img">
+      <%= image_tag @castle.castle_picture, width: '100%' %>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <strong>Minimum price:</strong>
-        <%= @castle.min_price %>
-      </div>
-      <div class="card">
-        <strong>Availability:</strong>
-        <%= @castle.availability %>
-      </div>
-    </div>
+    <div class="col-4 castle-info">
+      <ul class="list-group list-group-flush">
+        <div class="rating p-3">
+          <li class="list-group-item">
+            <h3>Average rating:</h3>
+            <%= @castle.castle_avg_rating %>
+          </li>
+        </div>
+        <div class="location p-3">
+          <li class="list-group-item">
+            <h3>Location:</h3>
+            <p class="fs-4"><%= @castle.location %></p>
+          </li>
+        </div>
+        <div class="min_price p-3">
+          <li class="list-group-item">
+            <h3>Minimum price:</h3>
+            <p class="fs-4"><%= @castle.min_price %></p>
+          </li>
+        </div>
+        <div class="availability p-3">
+          <li class="list-group-item">
+            <h3>Availability:</h3>
+            <p class="fs-4"><%= @castle.availability %></p>
+          </li>
+        </div>
+      </ul>
+        </div>
+  </div>
+  <div class="row justify-content-center ">
+    <h3>About:</h3>
   </div>
 
-  <div class="row">
+
+  <div class="row justify-content-center">
     <%= link_to "Back to search", castles_path %>
   </div>
 
