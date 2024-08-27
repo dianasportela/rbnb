@@ -31,13 +31,16 @@
     <%= @user.password %>
   </div>
 
-<%# --- OWNER? --- %>
+<%# --- CASTLES --- %>
 
-  <%# if @user.owner?
-    Owner
-  else
-    Customer
-  end %>
+  <div>
+    <strong>Castles:</strong>
+    <% @user.castles.each do | castle | %>
+      <div class="card">
+          <%= castle.castle_name %>
+      </div>
+    <% end %>
+  </div>
 
 <%# --- GO BACK --- %>
 
