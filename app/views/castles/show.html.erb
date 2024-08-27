@@ -7,41 +7,39 @@
       <%= image_tag @castle.castle_picture, width: '100%' %>
     </div>
     <div class="col-4 castle-info">
-      <ul class="list-group list-group-flush">
-        <div class="rating p-3">
-          <li class="list-group-item">
-            <h3>Average rating:</h3>
-            <%= @castle.castle_avg_rating %>
-          </li>
+      <div class="info">
+        <div class="d-flex gap-2 align-items-center p-3">
+          <i class="fa-solid fa-location-dot fs-3"></i>
+          <p class="mb-0 fs-4"><%= @castle.location %></p>
         </div>
-        <div class="location p-3">
-          <li class="list-group-item">
-            <h3>Location:</h3>
-            <p class="fs-4"><%= @castle.location %></p>
-          </li>
+        <div class="d-flex gap-2 align-items-center p-3">
+          <i class="fa-regular fa-star fs-3"></i>
+          <p class="mb-0 fs-4"><%= @castle.castle_avg_rating %></p>
         </div>
-        <div class="min_price p-3">
-          <li class="list-group-item">
-            <h3>Minimum price:</h3>
-            <p class="fs-4"><%= @castle.min_price %></p>
-          </li>
+        <div class="d-flex gap-2 align-items-center p-3">
+          <i class="fa-solid fa-dollar-sign fs-3"></i>
+          <p class="mb-0 fs-4"><%= @castle.min_price %></p>
         </div>
-        <div class="availability p-3">
-          <li class="list-group-item">
-            <h3>Availability:</h3>
-            <p class="fs-4"><%= @castle.availability %></p>
-          </li>
+        <div class="d-flex gap-2 align-items-center p-3">
+          <i class="fa-regular fa-calendar-days fs-3"></i>
+          <p class="mb-0 fs-4"><%= @castle.availability %></p>
         </div>
-      </ul>
-        </div>
+      </div>
+    </div>
   </div>
   <div class="row justify-content-center ">
-    <h3>About:</h3>
+    <div class="overview">
+      <h3>About:</h3>
+      <div class="text-box">
+        <p class="mb-0 fs-4"><%= @castle.overview %></p>
+      </div>
+    </div>
   </div>
 
-
-  <div class="row justify-content-center">
-    <%= link_to "Back to search", castles_path %>
+  <div class="row">
+    <div class="button_links">
+      <%= link_to "Back to search", castles_path, class: "btn btn-primary" %>
+    </div>
   </div>
 
 </div>
