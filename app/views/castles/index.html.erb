@@ -1,10 +1,12 @@
  <div class= "container" >
   <div class = "cards">
     <% @castles.each do |castle| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= castle.castle_picture %>)">
-        <h4><%= castle.castle_name %></h4>
-          <p><%= castle.location %></p>
-    </div>
+        <%= link_to castle_path(castle), class: 'no_underline' do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= castle.castle_picture %>)">
+            <h3><strong><%= castle.castle_name %></strong></h3>
+            <h4><%= castle.location %></h4>
+          </div>
+        <% end %>
     <% end %>
   </div>
 </div>
