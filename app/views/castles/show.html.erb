@@ -1,28 +1,30 @@
-<div class="container">
-  <h1 class="text-center"><%= @castle.castle_name %></h1>
-  <div class="row justify-content-center">
-    <% if @castle.castle_picture.attached? %>
-      <%= cl_image_tag @castle.castle_picture, height: 300, width: 400, crop: :fill %>
-    <% end %>
+<div class="container mt-4">
+  <div class="row">
+    <h1 class="text-center"><%= @castle.castle_name %></h1>
   </div>
   <div class="row justify-content-center">
-    <div class="col-8">
-      <div class="card">
-        <strong>Average rating:</strong>
-        <%= @castle.castle_avg_rating %>
+    <div class="d-flex justify-content-evenly bd-highlight p-0 mb-3">
+      <div class="col-9 me-5">
+        <%= image_tag @castle.castle_picture, width: 990 %>
       </div>
-
-      <div class="card">
-        <p>
-          <strong>Location:</strong>
-          <%= @castle.location %>
-        </p>
-
-        <p>
-          <strong>About:</strong>
-          <%= @castle.overview %>
-        </p>
+      <div class="col-3 castle-info position-relative">
+        <div class="rating position-absolute top-0 start-0">
+          <h3>Average rating:</h3>
+          <%= @castle.castle_avg_rating %>
+        </div>
+        <div class="location position-absolute top-50 start-0">
+          <h3>Location:</h3>
+          <p class="fs-2"><%= @castle.location %></p>
+        </div>
       </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="card col-8">
+      <p>
+        <strong>About:</strong>
+        <%= @castle.overview %>
+      </p>
     </div>
     <div class="col-4">
       <div class="card">
