@@ -1,6 +1,7 @@
-<h1> Castles </h1>
-<ul>
+
   <% @castles.each do |castle| %>
-    <li><%= castle.castle_name %></li>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= castle.castle_picture %>)">
+      <h1><%= castle.castle_name %></h1>
+        <p><%= castle.location %></p>
+  </div>
   <% end %>
-</ul>
