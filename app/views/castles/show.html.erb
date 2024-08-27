@@ -3,40 +3,42 @@
     <h1 class="text-center"><%= @castle.castle_name %></h1>
   </div>
   <div class="row justify-content-center">
-    <div class="d-flex justify-content-evenly bd-highlight p-0 mb-3">
-      <div class="col-9 me-5">
-        <%= image_tag @castle.castle_picture, width: 990 %>
-      </div>
-      <div class="col-3 castle-info position-relative">
-        <div class="rating position-absolute top-0 start-0">
-          <h3>Average rating:</h3>
-          <%= @castle.castle_avg_rating %>
+    <div class="col-8 img">
+      <%= image_tag @castle.castle_picture, width: '100%' %>
+    </div>
+    <div class="col-4 castle-info">
+      <ul class="list-group list-group-flush">
+        <div class="rating p-3">
+          <li class="list-group-item">
+            <h3>Average rating:</h3>
+            <%= @castle.castle_avg_rating %>
+          </li>
         </div>
-        <div class="location position-absolute top-50 start-0">
-          <h3>Location:</h3>
-          <p class="fs-2"><%= @castle.location %></p>
+        <div class="location p-3">
+          <li class="list-group-item">
+            <h3>Location:</h3>
+            <p class="fs-4"><%= @castle.location %></p>
+          </li>
         </div>
-      </div>
-    </div>
+        <div class="min_price p-3">
+          <li class="list-group-item">
+            <h3>Minimum price:</h3>
+            <p class="fs-4"><%= @castle.min_price %></p>
+          </li>
+        </div>
+        <div class="availability p-3">
+          <li class="list-group-item">
+            <h3>Availability:</h3>
+            <p class="fs-4"><%= @castle.availability %></p>
+          </li>
+        </div>
+      </ul>
+        </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="card col-8">
-      <p>
-        <strong>About:</strong>
-        <%= @castle.overview %>
-      </p>
-    </div>
-    <div class="col-4">
-      <div class="card">
-        <strong>Minimum price:</strong>
-        <%= @castle.min_price %>
-      </div>
-      <div class="card">
-        <strong>Availability:</strong>
-        <%= @castle.availability %>
-      </div>
-    </div>
+  <div class="row justify-content-center ">
+    <h3>About:</h3>
   </div>
+
 
   <div class="row justify-content-center">
     <%= link_to "Back to search", castles_path %>
