@@ -1,9 +1,11 @@
 <div class="container">
-  <h1><%= @castle.castle_name %></h1>
-  <div class="row ">
-    <%= @castle.castle_picture %>
+  <h1 class="text-center"><%= @castle.castle_name %></h1>
+  <div class="row justify-content-center">
+    <% if @castle.castle_picture.attached? %>
+      <%= cl_image_tag @castle.castle_picture, height: 300, width: 400, crop: :fill %>
+    <% end %>
   </div>
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-8">
       <div class="card">
         <strong>Average rating:</strong>
@@ -34,7 +36,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row justify-content-center">
     <%= link_to "Back to search", castles_path %>
   </div>
 
