@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_castle, only: [:new, :create]
-  
+
   def new
     @booking = Booking.new
   end
@@ -17,9 +17,9 @@ class BookingsController < ApplicationController
       render 'new', status: :unprocessable_entity
     end
   end
-  
+
   private
-  
+
   def set_castle
     @castle = Castle.find(params[:castle_id])
   end
