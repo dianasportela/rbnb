@@ -1,0 +1,50 @@
+<div class="container">
+
+<%# --- USER NAME --- %>
+
+  <h1><%= @user.name %></h1>
+
+<%# --- USER PROFILE PICTURE --- %>
+
+  <div class="row ">
+    <%= @user.picture %>
+  </div>
+
+<%# --- AVERAGE RATING --- %>
+
+  <div class="card">
+    <strong>Average rating:</strong>
+    <%= @user.avg_rating %>
+  </div>
+
+<%# --- EMAIL --- %>
+
+  <div class="card">
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </div>
+
+<%# --- PASSWORD --- %>
+
+  <div class="card">
+    <strong>Password:</strong>
+    <%= @user.password %>
+  </div>
+
+<%# --- CASTLES --- %>
+
+  <div>
+    <strong>Castles:</strong>
+    <% @user.castles.each do | castle | %>
+      <div class="card">
+          <%= castle.castle_name %>
+      </div>
+    <% end %>
+  </div>
+
+<%# --- GO BACK --- %>
+
+  <div class="row">
+    <%= link_to "Back to search", users_path %>
+  </div>
+</div>

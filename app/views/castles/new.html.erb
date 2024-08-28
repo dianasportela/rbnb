@@ -1,17 +1,9 @@
-<h1>THIS IS THE NEW CASTLE PAGE</h1>
+<div class="container">
+  <h1>Add a new castle</h1>
 
-<%= form_with model: @castle do |f| %>
-  <%= f.label :castle_name %>
-  <%= f.text_field :castle_name %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <%= f.label :castle_picture %>
-  <%= f.url_field :castle_picture %>
-  <%= f.label :overview %>
-  <%= f.text_field :overview %>
-   <%= f.label :overview %>
-  <%= f.text_field :overview %>
-  <%= f.submit %>
-<% end %>
+  <%= render 'form', status: :unprocessable_entity %>
 
-<%= link_to "back to list", castles_path, class: "btn btn-primary"%>
+  <div>
+    <p><%= link_to "back to list", castles_path, class: "btn btn-primary"%></p>
+  </div>
+</div>
