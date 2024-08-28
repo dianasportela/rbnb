@@ -6,9 +6,23 @@
     <div class="col-8 img">
     <%#= showing cloudinary photos %>
       <% if @castle.photos.attached? %>
-        <% @castle.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, width: '100%' %>
-        <% end  %>
+        <div id="carousel_<%= @castle.id %>" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @castle.photos.each_with_index do |photo, index| %>
+              <div id="carousel_item_<%= index %>" class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                <%= cl_image_tag photo.key, width: '100%' %>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel_<%= @castle.id %>" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel_<%= @castle.id %>" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       <% else %>
         <%= image_tag @castle.castle_picture, width: '100%' %>
       <% end %>
