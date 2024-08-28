@@ -1,19 +1,33 @@
 <div class="container mt-4">
-  <div class="row">
-    <h1 class="text-center"><%= @castle.castle_name %></h1>
+  <div class="row p-5">
+    <h1 class="text-center text-uppercase fw-bolder"><%= @castle.castle_name %></h1>
   </div>
   <div class="row justify-content-center">
     <div class="col-8 img">
     <%#= showing cloudinary photos %>
       <% if @castle.photos.attached? %>
-        <% @castle.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, width: '100%' %>
-        <% end  %>
+        <div id="carousel_<%= @castle.id %>" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @castle.photos.each_with_index do |photo, index| %>
+              <div id="carousel_item_<%= index %>" class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                <%= cl_image_tag photo.key, width: '100%' %>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel_<%= @castle.id %>" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel_<%= @castle.id %>" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       <% else %>
         <%= image_tag @castle.castle_picture, width: '100%' %>
       <% end %>
     </div>
-    <div class="col-4 castle-info">
+    <div class="col-4 castle-info border bg-white">
       <div class="info">
         <div class="d-flex gap-2 align-items-center p-3">
           <i class="fa-solid fa-location-dot fs-3"></i>
@@ -34,11 +48,11 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center ">
-    <div class="overview">
+  <div class="row justify-content-center m-5">
+    <div class="overview ">
       <h3>About:</h3>
       <div class="text-box">
-        <p class="mb-0 fs-4"><%= @castle.overview %></p>
+        <p class="mb-0 fs-5"><%= @castle.overview %></p>
       </div>
     </div>
   </div>
