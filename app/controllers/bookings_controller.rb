@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @castle = Castle.find(params[:castle_id])
-    @booking.castle_id = @castle
+    @booking.castle = @castle
     if @booking.save
       redirect_to castle_path(@castle)
     else
