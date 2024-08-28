@@ -14,7 +14,7 @@ class CastlesController < ApplicationController
     @castle = Castle.new(castle_params)
     @castle.user = current_user
     if @castle.save
-      redirect_to castles_path
+      redirect_to root_path
     else
       render 'new', status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class CastlesController < ApplicationController
 
   def destroy
     if @castle.destroy
-      redirect_to castles_path, status: :see_other, notice: "Castle was successfully destroyed."
+      redirect_to root_path, status: :see_other, notice: "Castle was successfully destroyed."
     else
       render 'show', status: :unprocessable_entity
     end
