@@ -1,7 +1,12 @@
 <%= simple_form_for(@castle) do |f| %>
   <%= f.input :castle_name %>
   <%= f.input :location %>
+  <%= f.input :min_price %>
   <%= f.input :overview %>
+  <%= f.input :castle_avg_rating, input_html: { min: 0, max: 10 } %>
+  <%= f.input :min_price, input_html: { min: 0} %>
+  <%= f.input :availability %>
+
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
+  <%= f.submit  %>
 <% end %>
