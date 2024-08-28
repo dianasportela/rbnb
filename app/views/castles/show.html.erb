@@ -59,7 +59,7 @@
 
   <div class="row pt-5 pb-5">
     <div class="button_links">
-      <%= link_to "Back to search", castles_path, class: "btn btn-primary" %>
+      <%= link_to "Back to search", root_path, class: "btn btn-primary" %>
       <%= link_to "Edit", edit_castle_path(@castle.id), class: "btn btn-primary" %>
       <%= link_to "Delete", castle_path(@castle.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this castle ?" }, class: "btn btn-outline-danger" %>
     </div>
