@@ -44,8 +44,11 @@
   </div>
 
   <div class="row">
-    <div class="button_links">
+    <div class="button_links mt-2">
       <%= link_to "Back to search", castles_path, class: "btn btn-primary" %>
+    </div>
+    <div class="button_links mt-2">
+      <%= link_to "Book castle", new_castle_booking_path(@castle), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
