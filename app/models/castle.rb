@@ -1,6 +1,6 @@
 class Castle < ApplicationRecord
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :restrict_with_error
   validates :castle_name, :location, presence: true
   # validates :photos, presence: true
   validates :castle_avg_rating, numericality: { in: 0..10 }

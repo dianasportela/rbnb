@@ -32,9 +32,11 @@ class CastlesController < ApplicationController
   end
 
   def destroy
-    @castle.destroy
-
-    redirect_to castles_path, notice: "Castle was successfully destroyed.", status: :see_other
+    if @castle.destroy
+      redirect_to castles_path, status: :see_other, notice: "Castle was successfully destroyed."
+    else
+      render 'show', status: :unprocessable_entity
+    end
   end
 
   def show
