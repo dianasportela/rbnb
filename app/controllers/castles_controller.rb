@@ -4,6 +4,12 @@ class CastlesController < ApplicationController
 
   def index
     @castles = Castle.all
+    @markers = @castles.geocoded.map do |castle|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def new
