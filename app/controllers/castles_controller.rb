@@ -40,6 +40,7 @@ class CastlesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   private
