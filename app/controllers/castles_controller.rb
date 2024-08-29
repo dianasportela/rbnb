@@ -4,6 +4,9 @@ class CastlesController < ApplicationController
 
   def index
     @castles = Castle.all
+    if params[:query].present?
+      @castles = @castles.global_search(params[:query])
+    end
   end
 
   def new
