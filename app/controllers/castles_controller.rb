@@ -6,9 +6,10 @@ class CastlesController < ApplicationController
     @castles = Castle.all
     @markers = @castles.geocoded.map do |castle|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: castle.latitude,
+        lng: castle.longitude
       }
+    end
     if params[:query].present?
       @castles = @castles.global_search(params[:query])
     end
