@@ -6,5 +6,4 @@ class Castle < ApplicationRecord
   validates :castle_avg_rating, numericality: { in: 0..10 }
   validates :min_price, numericality: { greater_than: 0 }
   has_many_attached :photos
-  #validates :date_end, comparison: { greater_than: :date_start }
 end
