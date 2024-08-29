@@ -65,7 +65,7 @@
     </div>
     <%# adding toggle button to new booking in the show page %>
     <div data-controller="toggle" class="mt-5">
-      <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book HEREEE</button>
+      <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book here</button>
         <div data-toggle-target="togglableElement" class="d-none">
           <%= render "bookings/form", castle: @castle, booking: @booking %>
         </div>

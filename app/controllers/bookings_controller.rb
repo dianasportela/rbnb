@@ -14,7 +14,8 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to castle_path(@castle)
     else
-      render 'new', status: :unprocessable_entity
+
+      render 'castles/show', status: :unprocessable_entity
     end
   end
 
