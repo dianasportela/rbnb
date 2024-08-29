@@ -23,3 +23,16 @@
 .no_underline {
   text-decoration: none;
 }
+
+.booking-card-image{
+  // height: 100%;
+  width: 200px;
+  
+}
+
+.booking-card{
+  width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+}
