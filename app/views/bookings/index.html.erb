@@ -1,0 +1,23 @@
+<div class= "container" >
+  <div class="row text-uppercase">
+    <h3> My Trips:</h3>
+  </div>
+  <div class="row">
+    <div class = "cards">
+      <% @bookings.each do |booking| %>
+          <div class="card">
+            <img class="card-img-top" src="<%= booking.castle.castle_picture %>" alt="<%= booking.castle.castle_name %>">
+            <div class="card-body">
+              <%= link_to bookings_path(booking), class: 'no_underline' do %>
+              <h5 class="card-title"><%= booking.castle.castle_name %></h5>
+              <p class="card-text">Check-in: <%= booking.date_start %></p>
+              <p class="card-text">Check-out: <%= booking.date_end %></p>
+              <p class="card-text">Cost: <%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

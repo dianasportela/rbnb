@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :castles, except: :index do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :show]
   end
+  resources :bookings, only: [:index]
   resources :users, only: [:show]
 end
