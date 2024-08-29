@@ -56,6 +56,7 @@
             <div>
               <p>Start date: <%= booking.date_start %></p>
               <p>End date: <%= booking.date_end %></p>
+              <p>Revenue: <%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></p>
             </div>
           <% end %>
         <% end %>
