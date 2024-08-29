@@ -1,7 +1,23 @@
-<div class= "container" >
-      <div class="banner">
-      <h1>Your fairytale castle awaits</h1>
+ <div class= "container" >
+  <div class="banner">
+    <h1>Your fairytale castle awaits</h1>
+  </div>
+
+  <!-- TODO: Insert inside the `.container`, above the first `.row` -->
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Search for a castle or location"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <% end %>
     </div>
+  </div>
+  <!-- [...] -->
+
   <div class = "cards">
     <% @castles.each do |castle| %>
       <%= link_to castle_path(castle), class: 'no_underline' do %>

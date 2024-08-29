@@ -9,6 +9,8 @@ class CastlesController < ApplicationController
         lat: flat.latitude,
         lng: flat.longitude
       }
+    if params[:query].present?
+      @castles = @castles.global_search(params[:query])
     end
   end
 
