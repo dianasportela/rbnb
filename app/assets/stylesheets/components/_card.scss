@@ -26,18 +26,26 @@
 
 .booking-card-image{
   // height: 100%;
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
+  height: 200px;
+  width: 260px;
+  border-radius: 10px 0px 0px 10px;
 }
 
 .booking-card{
   background-color: white;
   border-radius: 10px;
   // border: 1px solid grey;
-  width: 500px;
+  width: 510px;
   height: 200px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
+
+.booking-text{
+  margin-right: 25px;
+}
+
+// #cost {
+//   color: rgba(128, 128, 128, 0.672);
+// }
