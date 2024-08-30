@@ -6,7 +6,7 @@ class Castle < ApplicationRecord
   validates :castle_avg_rating, numericality: { in: 0..10 }
   validates :min_price, numericality: { greater_than: 0 }
   has_many_attached :photos
-  # for future purpose => validates :end_date, comparison: { greater_than: :start_date }
+
 
   include PgSearch::Model
   pg_search_scope :global_search,

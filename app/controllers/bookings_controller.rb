@@ -27,6 +27,8 @@ class BookingsController < ApplicationController
 # ADDING THE EDIT AND UPDATE
 
   def edit
+    raise
+
   end
 
   def update
