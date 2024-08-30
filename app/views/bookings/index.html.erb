@@ -1,15 +1,16 @@
-<div class="container d-flex flex-wrap">
-  <% @bookings.each do |booking| %>
-    <div class="booking-card">
-      <div>
-        <img class="booking-card-image" src="<%= booking.castle.castle_picture %>" alt="<%= booking.castle.castle_name %>">
+
+  <div class="container d-flex flex-wrap mt-4">
+    <% @bookings.each do |booking| %>
+      <div class="booking-card mx-3 mb-2 mt-2">
+        <div>
+          <img class="booking-card-image" src="<%= booking.castle.castle_picture %>" alt="<%= booking.castle.castle_name %>">
+        </div>
+        <div class="booking-text p-3">
+          <h5 class="mb-3"><strong><%= booking.castle.castle_name %></strong></h5>
+          <p class="mb-0">Check-in: <%= booking.date_start %></p>
+          <p class="mb-0">Check-out: <%= booking.date_end %></p>
+          <p class="mb-0" id="cost">Cost: <%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></p>
+        </div>
       </div>
-      <div>
-        <h5 class=""><%= booking.castle.castle_name %></h5>
-        <p class="">Check-in: <%= booking.date_start %></p>
-        <p class="">Check-out: <%= booking.date_end %></p>
-        <p class="">Cost: <%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></p>
-      </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>

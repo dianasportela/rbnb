@@ -1,5 +1,15 @@
-<%= simple_form_for([ castle, booking ]) do |f| %>
-  <%= f.input :date_start %>
-  <%= f.input :date_end %>
-  <%= f.submit %>
-<% end %>
+
+<div class="container">
+  <div class="row col-6 mt-5">
+    <%= simple_form_for([ castle, booking ]) do |f| %>
+    <%# adding the datepicker to the form %>
+      <div data-toggle-target="errors">
+        <%= f.error_notification %>
+      </div>
+      <%= f.input :date_start, as: :string, label: 'Check-in', input_html: { data: { controller: "datepicker"} }%>
+      <%= f.input :date_end, as: :string, label: 'Check-out', input_html: { data: { controller: "datepicker"} }%>
+      <%= f.button :submit, class: 'btn btn-primary my-custom-class', data: { turbo: true } %>
+    <% end %>
+  </div>
+</div>
+

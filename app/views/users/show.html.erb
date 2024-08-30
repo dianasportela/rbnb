@@ -20,7 +20,7 @@
       <p class="mb-0 fs-5"><strong>Email:</strong> <%= @user.email %></p>
    </div>
   </div>
-  
+
   <div class="row p-4">
     <div class="accordion m-0 p-0" id="myCastles">
       <% castle = @castle.id %>
@@ -73,10 +73,24 @@
         </div>
       <% end %>
     </div>
-  </div>  
-  
+  </div>
 
-  <div class="row">
-    <%= link_to "Back to search", user_session_path %>
+
+</div>
+
+
+  <%# ADDING NEW CASTLE FORM HERE %>
+
+<div class="container ">
+  <div>
+    <div>
+      <%= link_to "Back to search", user_session_path, class: "btn btn-primary" %>
+    </div>
+    <div data-controller="toggle" class="m-0 pt-4">
+      <button data-action="click->toggle#fire" class="btn btn-outline-primary">+ New castle</button>
+      <div data-toggle-target="togglableElement" class="d-none">
+        <%= render 'castles/form', castle: @castle %>
+      </div>
+    </div>
   </div>
 </div>

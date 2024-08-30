@@ -19,7 +19,7 @@ class CastlesController < ApplicationController
     if @castle.save
       redirect_to root_path
     else
-      render 'new', status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -43,6 +43,7 @@ class CastlesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   private
