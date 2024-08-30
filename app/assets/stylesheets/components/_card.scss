@@ -26,13 +26,18 @@
 
 .booking-card-image{
   // height: 100%;
-  width: 200px;
-  
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
 }
 
 .booking-card{
+  background-color: white;
+  border-radius: 10px;
+  // border: 1px solid grey;
   width: 500px;
-  height: 400px;
+  height: 200px;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
