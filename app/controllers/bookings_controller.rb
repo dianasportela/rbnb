@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_castle, only: %i[new create]
 
+  def index
+    @bookings = Booking.all
+  end
+
   def new
     @booking = Booking.new
   end
@@ -14,8 +18,13 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to castle_path(@castle)
     else
-      render 'new', status: :unprocessable_entity
+
+      render 'castles/show', status: :unprocessable_entity
     end
+  end
+
+  def show
+    @bookings = current_user.bookings
   end
 
   private
