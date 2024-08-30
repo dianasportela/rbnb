@@ -6,7 +6,7 @@
           <h1 class="text-uppercase"><%= @user.username %></h1>
         </div>
     </div>
-<<<<<<< HEAD
+
     <div class="col-3">
       <div class="card border-0 float-end">
         <p><strong>Average rating:</strong></p>
@@ -26,12 +26,13 @@
     <div class="accordion m-0 p-0" id="myCastles">
       <% castle = @castle.id %>
       <% if @my_castles.length > 0 %>
-        <div class="accordion-item">
-          <h3 class="accordion-header" id="heading_<%= castle %>">
-            <button class="accordion-button p-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_<%= castle %>" aria-expanded="true" aria-controls="collapse_<%= castle %>">
-              <h3 class="mb-0">My Castles:</h3>
+        <div class="card">
+          <div class="card-header" id="heading_<%= castle %>">
+            <h3 class="mb-0 d-inline">
+              <button class="btn btn-link p-1" data-bs-toggle="collapse" data-bs-target="#collapse_<%= castle %>" aria-expanded="true" aria-controls="collapse_<%= castle %>">
             </button>
-          </h3>
+            </h3>
+          </div>
           <div id="collapse_<%= castle %>" class="accordion-collapse collapse show" aria-labelledby="heading_<%= castle %>" data-bs-parent="#myCastles">
             <div class="accordion-body p-1">
               <% @my_castles.each do |my_castle| %>
@@ -50,6 +51,7 @@
                               <th scope="col">Who's renting:</th>
                               <th scope="col">Starting date</th>
                               <th scope="col">Ending date</th>
+                              <th scope="col">Total revenue</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -58,6 +60,7 @@
                               <td><%= booking.user.username %></td>
                               <td><%= booking.date_start %></td>
                               <td><%= booking.date_end %></td>
+                              <td><%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></td>
                             <% end %>
                             </tr>
                           </tbody>
@@ -67,17 +70,6 @@
                   </div>
                 </div>
               <% end %>
-=======
-    <div class="row">
-      <div class = "cards">
-        <% @bookings.each do |booking| %>
-          <h5 class="card-header"><%= booking.castle.castle_name %></h5>
-          <%= link_to user_session_path(booking), class: 'no_underline' do %>
-            <div>
-              <p>Start date: <%= booking.date_start %></p>
-              <p>End date: <%= booking.date_end %></p>
-              <p>Revenue: <%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></p>
->>>>>>> master
             </div>
           </div>
         </div>
