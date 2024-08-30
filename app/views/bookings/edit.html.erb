@@ -1,7 +1,7 @@
-<h1>this is the edit booking page</h1>
 
-<div class="container">
-  <h1>Edit <%= @booking.id %></h1>
+
+<div class="container pt-3">
+  <h1>Edit your reservation </h1>
   <%# PARTIALS %>
 </div>
 
@@ -13,8 +13,8 @@
       <div data-toggle-target="errors">
         <%= f.error_notification %>
       </div>
-      <%= f.input :date_start, as: :string, label: 'Check-in', input_html: { data: { controller: "datepicker"} }%>
-      <%= f.input :date_end, as: :string, label: 'Check-out', input_html: { data: { controller: "datepicker"} }%>
+      <%= f.input :date_start, as: :string, label: 'New Check-in', input_html: { data: { controller: "datepicker"} }%>
+      <%= f.input :date_end, as: :string, label: 'New Check-out', input_html: { data: { controller: "datepicker"} }%>
       <%= f.button :submit, class: 'btn btn-primary my-custom-class', data: { turbo: true } %>
     <% end %>
   </div>
