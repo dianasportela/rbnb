@@ -3,11 +3,13 @@ class CastlesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-    @castles = Castle.all
-    @markers = @castles.geocoded.map do |castle|
+    @castles = Castle.geocoded
+    @markers = @castles.map do |castle|
       {
         lat: castle.latitude,
-        lng: castle.longitude
+        lng: castle.longitude,
+        info_window: render_to_string(partial: "popup", locals: {castle: castle}),
+        marker_html: render_to_string(partial: "marker")
       }
     end
     if params[:query].present?

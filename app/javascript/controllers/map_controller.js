@@ -1,4 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import mapboxgl from "mapbox-gl";
 
 // Connects to data-controller="map"
 export default class extends Controller {
@@ -16,6 +18,10 @@ export default class extends Controller {
     });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    this.map.addControl(new MapboxGeocoder({ accessToken:
+    mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+    }))
   }
 
   #fitMapToMarkers() {
@@ -28,10 +34,14 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+      const customMarker = document.createElement("div")
+      customMarker.innerHTML = marker.marker_html
           // Create a new marker, set the longitude and latitude, and add it to the map.
-      new mapboxgl.Marker()
+      new mapboxgl.Marker(customMarker)
         .setLngLat([marker.lng, marker.lat])
-        .addTo(this.map);
+        .setPopup(popup)
+        .addTo(this.map)
     })
   }
 }
