@@ -6,10 +6,11 @@
           <img class="booking-card-image" src="<%= booking.castle.castle_picture %>" alt="<%= booking.castle.castle_name %>">
         </div>
         <div class="booking-text p-3">
-          <h5 class="mb-3"><strong><%= booking.castle.castle_name %></strong></h5>
+          <h5 class="mb-3"><strong><%= booking.castle.castle_name%></strong></h5>
           <p class="mb-0">Check-in: <%= booking.date_start %></p>
           <p class="mb-0">Check-out: <%= booking.date_end %></p>
           <p class="mb-0" id="cost">Cost: <%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></p>
+          <p class="mt-3"><%= link_to 'edit booking 🖊️' , edit_booking_path(booking), class: 'no_underline'  %></p>
         </div>
       </div>
     <% end %>
