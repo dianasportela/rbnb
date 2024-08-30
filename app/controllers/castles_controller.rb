@@ -3,7 +3,15 @@ class CastlesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-    @castles = Castle.all
+    @castles = Castle.geocoded
+    @markers = @castles.map do |castle|
+      {
+        lat: castle.latitude,
+        lng: castle.longitude,
+        info_window: render_to_string(partial: "popup", locals: {castle: castle}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
     if params[:query].present?
       @castles = @castles.global_search(params[:query])
     end
@@ -19,7 +27,7 @@ class CastlesController < ApplicationController
     if @castle.save
       redirect_to root_path
     else
-      render 'new', status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -43,6 +51,7 @@ class CastlesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   private
