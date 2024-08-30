@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: :show
-  before_action :set_castle, only: :show
 
   def show
     @my_bookings = current_user.bookings
@@ -12,10 +11,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def set_castle
-    @castle = Castle.find(params[:id])
   end
 
   def castle_params
