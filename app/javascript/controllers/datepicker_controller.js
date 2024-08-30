@@ -7,7 +7,7 @@ export default class extends Controller {
     console.log("datepicker connected");
 
     flatpickr(this.element, {
-      dateFormat: "d-m-y"
+      
     })
   }
 }

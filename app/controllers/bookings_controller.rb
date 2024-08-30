@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_castle, only: %i[new create]
+  before_action :set_booking, only: %i[edit update]
 
   def index
     @bookings = Booking.all
@@ -23,6 +24,29 @@ class BookingsController < ApplicationController
     end
   end
 
+# ADDING THE EDIT AND UPDATE
+
+  def edit
+
+  end
+
+  def update
+    if @booking.update(booking_params)
+      redirect_to @booking, notice: "Booking was successfully updated.", status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  # def destroy
+  #   if @castle.destroy
+  #     redirect_to root_path, status: :see_other, notice: "Castle was successfully destroyed."
+  #   else
+  #     render 'show', status: :unprocessable_entity
+  #   end
+  # end
+
+
   def show
     @bookings = current_user.bookings
   end
@@ -35,5 +59,9 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:date_start, :date_end)
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end
