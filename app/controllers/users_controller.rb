@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @my_bookings = current_user.bookings
     @my_castles = current_user.castles
+    @castle = Castle.new
     @bookings = @castle.bookings.all
   end
 
