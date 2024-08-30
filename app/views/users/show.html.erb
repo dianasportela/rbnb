@@ -1,11 +1,16 @@
 <div class="container">
 
+  <div class="banner">
+    <h1>Your fairytale castle awaits</h1>
+  </div>
+
   <div class="row justify-content-center mt-3 p-4">
     <div class="col-9">
         <div class="card border-0 float-start">
           <h1 class="text-uppercase"><%= @user.username %></h1>
         </div>
     </div>
+
     <div class="col-3">
       <div class="card border-0 float-end">
         <p><strong>Average rating:</strong></p>
@@ -15,80 +20,66 @@
   </div>
 
 
-  <div class="row p-4">
+  <div class="row p-4" id="email">
     <div class="card p-2 border-0">
       <p class="mb-0 fs-5"><strong>Email:</strong> <%= @user.email %></p>
    </div>
   </div>
 
-  <div class="row p-4">
-    <div class="accordion m-0 p-0" id="myCastles">
-      <% castle = @castle.id %>
-      <% if @my_castles.length > 0 %>
+  <div class="row justify-content-center mt-3 p-4">
+    <div class="col-9">
+      <div class="card border-0 float-start">
+        <h2 class="mb-0">My Castles:</h2>
+      </div>
+    </div>
+
+  </div>
+  <% if @my_castles.length > 0 %>
+    <% @my_castles.each do |my_castle| %>
+      <div class="accordion" id="<%= my_castle.castle_name %>">
         <div class="accordion-item">
-          <h3 class="accordion-header" id="heading_<%= castle %>">
-            <button class="accordion-button p-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_<%= castle %>" aria-expanded="true" aria-controls="collapse_<%= castle %>">
-              <h3 class="mb-0">My Castles:</h3>
+          <h4 class="accordion-header p-0 d-inline">
+            <button class="accordion-button collapsed p-1 m-0" type="button" data-bs-toggle="collapse" data-bs-parent="<%= my_castle.castle_name %>" data-bs-parent="#<%= my_castle.castle_name %>" data-bs-target="#collapse<%= my_castle.castle_name %>" aria-expanded="false" aria-controls="collapse<%= my_castle.castle_name %>">
+              <h4 class="mb-0"><%= my_castle.castle_name %></h4>
             </button>
-          </h3>
-          <div id="collapse_<%= castle %>" class="accordion-collapse collapse show" aria-labelledby="heading_<%= castle %>" data-bs-parent="#myCastles">
-            <div class="accordion-body p-1">
-              <% @my_castles.each do |my_castle| %>
-                <div class="accordion" id="sub-myCastles">
-                  <div class="accordion-item">
-                    <h4 class="accordion-header p-0" id="sub-heading_<%= castle %>">
-                      <button class="accordion-button p-1 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#sub-collapse_<%= castle %>" aria-expanded="true" aria-controls="sub-collapse_<%= castle %>">
-                        <h5 class="mb-0"><%= my_castle.castle_name %></h5>
-                      </button>
-                    </h4>
-                    <div id="sub-collapse_<%= castle %>" class="accordion-collapse collapse" labelledby="#sub-heading_<%= castle %>" data-bs-parent="#sub-myCastles">
-                      <div class="accordion-body p-2">
-                        <table class="table table-sm">
-                          <thead>
-                            <tr>
-                              <th scope="col">Who's renting:</th>
-                              <th scope="col">Starting date</th>
-                              <th scope="col">Ending date</th>
-                              <th scope="col">Total revenue</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                            <% @bookings.each do |booking| %>
-                              <td><%= booking.user.username %></td>
-                              <td><%= booking.date_start %></td>
-                              <td><%= booking.date_end %></td>
-                              <td><%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></td>
-                            <% end %>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+          </h4>
+          <div id="collapse<%= my_castle.castle_name %>" class="accordion-collapse collapse" data-bs-parent="#castle<%= my_castle.castle_name %>">
+            <div class="accordion-body p-2">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Who's renting:</th>
+                    <th scope="col">Starting date</th>
+                    <th scope="col">Ending date</th>
+                    <th scope="col">Total revenue</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% my_castle.bookings.each do |booking| %>
+                    <tr>
+                      <td><%= booking.user.username %></td>
+                      <td><%= booking.date_start %></td>
+                      <td><%= booking.date_end %></td>
+                      <td><%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-      <% end %>
-    </div>
-  </div>
+      </div>
+    <% end %>
+  <% end %>
 
-
-</div>
-
-
-  <%# ADDING NEW CASTLE FORM HERE %>
-
-<div class="container ">
-  <div>
+  <div class="container">
     <div>
       <%= link_to "Back to search", user_session_path, class: "btn btn-primary" %>
     </div>
+
     <div data-controller="toggle" class="m-0 pt-4">
-      <button data-action="click->toggle#fire" class="btn btn-outline-primary">+ New castle</button>
-      <div data-toggle-target="togglableElement" class="d-none">
+      <button data-toggle-target="btn" data-action="click->toggle#openForm" class="btn btn-outline-primary">+ New castle</button>
+      <div data-toggle-target="form" class="d-none">
         <%= render 'castles/form', castle: @castle %>
       </div>
     </div>

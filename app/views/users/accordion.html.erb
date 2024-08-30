@@ -1,0 +1,19 @@
+<div class="row p-4">
+      <div class="accordion m-0 p-0" id="myCastles">
+        <div class="accordion-item">
+          <h2 class="accordion-header mb-0 d-inline">
+            <button class="accordion-button collapsed p-4" type="button" data-bs-toggle="collapse" data-bs-parent="#myCastles" data-bs-target="#collapse<% castle %>" aria-expanded="false" aria-controls="collapse<%= castle %>">
+              <h2 class="mb-0">My Castles:</h2>
+            </button>
+          </h2>
+          <div id="collapse<%= castle %>" class="accordion-collapse collapse" data-bs-parent="#myCastles">
+            <div class="accordion-body p-1">
+
+              <div class="accordion" id="<%= castle_name %>">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,7 +1,9 @@
-
 <div class="container">
   <div class="row col-6 mt-3 mb-5">
     <%= simple_form_for(@castle) do |f| %>
+      <div data-toggle-target="errors">
+        <%= f.error_notification %>
+      </div>
       <%= f.input :castle_name %>
       <%= f.input :location %>
       <%= f.input :min_price %>
