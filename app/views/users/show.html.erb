@@ -6,6 +6,7 @@
           <h1 class="text-uppercase"><%= @user.username %></h1>
         </div>
     </div>
+<<<<<<< HEAD
     <div class="col-3">
       <div class="card border-0 float-end">
         <p><strong>Average rating:</strong></p>
@@ -66,6 +67,17 @@
                   </div>
                 </div>
               <% end %>
+=======
+    <div class="row">
+      <div class = "cards">
+        <% @bookings.each do |booking| %>
+          <h5 class="card-header"><%= booking.castle.castle_name %></h5>
+          <%= link_to user_session_path(booking), class: 'no_underline' do %>
+            <div>
+              <p>Start date: <%= booking.date_start %></p>
+              <p>End date: <%= booking.date_end %></p>
+              <p>Revenue: <%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></p>
+>>>>>>> master
             </div>
           </div>
         </div>
