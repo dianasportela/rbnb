@@ -1,9 +1,12 @@
 class CastlesController < ApplicationController
-  before_action :set_castle, only: %i[ destroy edit show update ]
-  skip_before_action :authenticate_user!, only: [ :show, :index ]
+  before_action :set_castle, only: %i[destroy edit show update]
+  skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
     @castles = Castle.all
+    if params[:query].present?
+      @castles = @castles.global_search(params[:query])
+    end
   end
 
   def new
