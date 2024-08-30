@@ -1,4 +1,4 @@
- <div class= "container" >
+<div class= "container" >
 
   <div data-controller="map"
     id='map'
@@ -11,7 +11,6 @@
     <h1>Your fairytale castle awaits</h1>
   </div>
 
-  <!-- TODO: Insert inside the `.container`, above the first `.row` -->
   <div class="row justify-content-center">
     <div class="col-sm-8 my-3">
       <%= form_with url: root_path, method: :get, class: "d-flex" do %>
@@ -24,7 +23,6 @@
       <% end %>
     </div>
   </div>
-  <!-- [...] -->
 
   <div class = "cards">
     <% @castles.each do |castle| %>
@@ -33,12 +31,15 @@
         <%#=if user uploads the picture then it's going to show, else it's showing the DB picture %>
         <% if castle.photos.attached? %>
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= cl_image_path castle.photos.first.key %>)">
+            <h3><%= castle.castle_name %></h3>
+            <p><%= castle.location %></p>
+          </div>
         <% else %>
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= castle.castle_picture %>)">
+            <h3><%= castle.castle_name %></h3>
+            <p><%= castle.location %></p>
+          </div>
         <% end %>
-          <h3><%= castle.castle_name %></h3>
-          <p><%= castle.location %></p>
-        </div>
       <% end %>
     <% end %>
   </div>

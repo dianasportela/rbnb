@@ -1,5 +1,9 @@
 <div class="container">
 
+  <div class="banner">
+    <h1>Your fairytale castle awaits</h1>
+  </div>
+
   <div class="row justify-content-center mt-3 p-4">
     <div class="col-9">
         <div class="card border-0 float-start">
@@ -27,11 +31,11 @@
     <div class="row p-4">
       <div class="accordion m-0 p-0" id="myCastles">
         <div class="accordion-item">
-          <h3 class="accordion-header mb-0 d-inline">
-            <button class="accordion-button collapsed p-1" type="button" data-bs-toggle="collapse" data-bs-parent="#myCastles" data-bs-target="#collapse<% castle %>" aria-expanded="false" aria-controls="collapse<%= castle %>">
-              <h3 class="mb-0">My Castles:</h3>
+          <h2 class="accordion-header mb-0 d-inline">
+            <button class="accordion-button collapsed p-4" type="button" data-bs-toggle="collapse" data-bs-parent="#myCastles" data-bs-target="#collapse<% castle %>" aria-expanded="false" aria-controls="collapse<%= castle %>">
+              <h2 class="mb-0">My Castles:</h2>
             </button>
-          </h3>
+          </h2>
           <div id="collapse<%= castle %>" class="accordion-collapse collapse" data-bs-parent="#myCastles">
             <% @my_castles.each do |my_castle| %>
               <div class="accordion-body p-1">
@@ -76,25 +80,6 @@
       </div>
     </div>
 
-    <div class="row border-0 p-4" id="link">
-      <div class="card border-0 p-2">
-        <%= link_to "Back to search", user_session_path %>
-      </div>
-    </div>
-
-  <% else %>
-    <div class="row border-0 p-4" id="link">
-      <div class="card border-0 p-2">
-        <%= link_to "Back to search", user_session_path %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-  <%# ADDING NEW CASTLE FORM HERE %>
-
-<div class="container ">
-  <div>
     <div>
       <%= link_to "Back to search", user_session_path, class: "btn btn-primary" %>
     </div>
@@ -104,5 +89,15 @@
         <%= render 'castles/form', castle: @castle %>
       </div>
     </div>
-  </div>
+  <% else %>
+    <div>
+      <%= link_to "Back to search", user_session_path, class: "btn btn-primary" %>
+    </div>
+    <div data-controller="toggle" class="m-0 pt-4">
+      <button data-action="click->toggle#fire" class="btn btn-outline-primary">+ New castle</button>
+      <div data-toggle-target="togglableElement" class="d-none">
+        <%= render 'castles/form', castle: @castle %>
+      </div>
+    </div>
+  <% end %>
 </div>
