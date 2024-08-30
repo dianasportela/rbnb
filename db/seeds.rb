@@ -15,7 +15,7 @@
 
 Castle.destroy_all
 User.destroy_all
-cansada = User.create(email: 'dianinha@to_cansada.com', password: '123456')
+cansada = User.create(username: 'Diana Saddi', email: 'dianinha@to_cansada.com', password: '123456')
 
 Castle.create!(
   castle_name: "Neuschwanstein",
