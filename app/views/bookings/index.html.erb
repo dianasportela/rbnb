@@ -1,0 +1,15 @@
+<div class="container d-flex flex-wrap">
+  <% @bookings.each do |booking| %>
+    <div class="booking-card">
+      <div>
+        <img class="booking-card-image" src="<%= booking.castle.castle_picture %>" alt="<%= booking.castle.castle_name %>">
+      </div>
+      <div>
+        <h5 class=""><%= booking.castle.castle_name %></h5>
+        <p class="">Check-in: <%= booking.date_start %></p>
+        <p class="">Check-out: <%= booking.date_end %></p>
+        <p class="">Cost: <%= "#{booking.price.to_i.to_fs(:delimited)} EUR" %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
