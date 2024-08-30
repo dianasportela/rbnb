@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: :show
   
 
+  # depreciated method - moved to 'bookings_controller'
   def show
     @bookings = current_user.bookings
     @castle = Castle.new
