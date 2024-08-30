@@ -3,10 +3,10 @@ class UsersController < ApplicationController
 
   # depreciated method - moved to 'bookings_controller'
   def show
+    @castle=Castle.new
+    @castles = Castle.all
     @bookings = current_user.bookings
-    @castle = Castle.new
     @my_castles = current_user.castles
-    @allbookings = @castle.bookings.all
   end
 
   private
