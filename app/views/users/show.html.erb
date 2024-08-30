@@ -1,63 +1,5 @@
 <div class="container">
 
-<%# --- USER NAME --- %>
-
-  <h1><%= @user.name %></h1>
-
-<%# --- USER PROFILE PICTURE --- %>
-
-  <div class="row ">
-    <%= @user.picture %>
-  </div>
-
-<%# --- AVERAGE RATING --- %>
-
-  <div class="card">
-    <strong>Average rating:</strong>
-    <%= @user.avg_rating %>
-  </div>
-
-<%# --- EMAIL --- %>
-
-  <div class="card">
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </div>
-
-<%# --- PASSWORD --- %>
-
-  <div class="card">
-    <strong>Password:</strong>
-    <%= @user.password %>
-  </div>
-
-<%# --- CASTLES --- %>
-
-  <div>
-    <strong>Castles:</strong>
-    <% @user.castles.each do | castle | %>
-      <div class="card">
-          <%= castle.castle_name %>
-      </div>
-    <% end %>
-  </div>
-
-  <%# ADDING NEW CASTLE FORM HERE %>
-
-<div class="container">
-  <div data-controller="toggle" class="mt-3 mb-3">
-    <button data-action="click->toggle#fire" class="btn btn-outline-primary">+ New castle</button>
-    <div data-toggle-target="togglableElement" class="d-none">
-      <%= render 'castles/form', castle: @castle %>
-    </div>
-  </div>
-</div>
-
-<%# --- BOOKINGS --- %>
-
-  <div class= "container" >
-    <div class="row text-uppercase">
-      <h3> Your Bookings:</h3>
   <div class="row justify-content-center mt-3 p-4">
     <div class="col-9">
         <div class="card border-0 float-start">
@@ -134,7 +76,21 @@
   </div>
 
 
-  <div class="row">
-    <%= link_to "Back to search", user_session_path %>
+</div>
+
+
+  <%# ADDING NEW CASTLE FORM HERE %>
+
+<div class="container ">
+  <div>
+    <div>
+      <%= link_to "Back to search", user_session_path, class: "btn btn-primary" %>
+    </div>
+    <div data-controller="toggle" class="m-0 pt-4">
+      <button data-action="click->toggle#fire" class="btn btn-outline-primary">+ New castle</button>
+      <div data-toggle-target="togglableElement" class="d-none">
+        <%= render 'castles/form', castle: @castle %>
+      </div>
+    </div>
   </div>
 </div>
